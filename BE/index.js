@@ -2,7 +2,6 @@ import express from "express"
 import TravelRouter from "./routers/TravelRoutes.js"
 import './config/config.js'
 
-// import cors from 'cors'
 const app = express()
 const port = 3000
 

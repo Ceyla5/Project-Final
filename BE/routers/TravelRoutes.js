@@ -1,11 +1,14 @@
 import express from 'express'
-import {TravelController} from '../controllers/TravelController.js'
+import {createTravel,deleteByIdTravel, updateByIdTravel, getTravels, getTravel} from '../controllers/TravelController.js'
+import { verifyAccess } from '../middleware/AuthMiddleware.js'
+
 
 const router = express.Router()
 
-router.get('/',TravelController.getTravels)
-router.get('/:id',TravelController.getTravel)
-router.post('/',TravelController.postTravel)
-router.delete('/:id',TravelController.deleteTravel)
+router.get('/', getTravels)
+router.get('/:id', getTravel)
+router.post('/',verifyAccess(["user","admin"]), createTravel)
+router.put('/:id',verifyAccess(["user","admin"]), updateByIdTravel)
+router.delete('/:id',verifyAccess(["user","admin"]), deleteByIdTravel)   
 
 export default router
