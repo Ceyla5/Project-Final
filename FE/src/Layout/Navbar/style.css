@@ -1,0 +1,29 @@
+
+.navContact{
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #F9F9FF;
+}
+.navContactNum{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 75px;
+}
+.navTitle{
+    font-size: large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    color: black;
+}
