@@ -68,7 +68,7 @@ function Admin() {
                   <tr key={x._id}>
                     <td> <img width={"70px"} src={x.image} alt="" /> </td>
                     <td> {x.name} </td>
-                    <td> ${x.price.toFixed(2)} </td>
+                    <td>{x.price.toFixed(2)} Manat</td>
                     <td> <button onClick={() => handleDelete(x._id)}>Delete</button> </td>
                   </tr>)
             }
