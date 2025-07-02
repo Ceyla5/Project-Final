@@ -4,7 +4,6 @@ import './App.css'
 import MainLayout from './Layout/MainLayout'
 import Add from './pages/Add/Add'
 import Admin from './pages/Admin/Admin'
-import Basket from './pages/Basket/Basket'
 import Detail from './pages/Detail/Detail'
 import Home from './pages/Home/Home'
 import NoPage from './pages/NoPage/NoPage'
@@ -22,7 +21,6 @@ function App() {
           <Route path="add" element={<Add />} />
           <Route path="detail/:id" element={<Detail />} />
           <Route path="wishlist" element={<Wishlist />} />
-          <Route path="basket" element={<Basket />} />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>
