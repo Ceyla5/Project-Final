@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 50px;
+  padding: 10px;
 }
 .homeTitle {
   display: flex;
@@ -26,9 +26,9 @@
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
-  width: 70%;
+  /* width: 95%; */
   gap: 20px;
-  padding: 20px;
+  padding: 10px;
 }
 .card {
   display: flex;
