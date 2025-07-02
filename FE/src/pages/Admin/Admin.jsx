@@ -38,7 +38,7 @@ function Admin() {
   }
   return (
     <>
-        <title>Home</title>
+        <title>Admin</title>
 
       <div>
         <input type="text" placeholder='Search Name' value={search} onChange={(e) => setsearch(e.target.value)} />
@@ -66,15 +66,13 @@ function Admin() {
                 .filter((x) => x.name.toLowerCase().includes(search.toLowerCase()))
                 .map((x) =>
                   <tr key={x._id}>
-                    <td> <img width={"70px"} src={x.img} alt="" /> </td>
+                    <td> <img width={"70px"} src={x.image} alt="" /> </td>
                     <td> {x.name} </td>
                     <td> ${x.price.toFixed(2)} </td>
                     <td> <button onClick={() => handleDelete(x._id)}>Delete</button> </td>
                   </tr>)
             }
-
-
-          </tbody>
+         </tbody>
 
 
         </table>
