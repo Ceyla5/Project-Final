@@ -17,7 +17,7 @@ function Wishlist() {
               <div className='cardTitle'>
                 <h4>{x.name}</h4>
                 <h5>{x.description}</h5>
-                <p>${x.price}</p>
+                <p>{x.price} Manat</p>
               </div>
               <div>
                 <button onClick={() => handleWishlist(x)}> wishlist {checkAtWishlist(x) ? "♥️" : '♡'}</button>
