@@ -28,7 +28,7 @@ function Home() {
                 <div className='cardImg'> <img src={x.image} alt="" /></div>
                 <div className='cardTitle'>
                   <h4>{x.name}</h4>
-                  <p>${x.price.toFixed(2)}</p>
+                  <p>{x.price.toFixed(2)} Manat</p>
                 </div>
                 <div className='cardBtn'>
                   <button onClick={() => handleWishlist(x)}>{checkAtWishlist(x) ? "♥️" : '♡'}</button>
