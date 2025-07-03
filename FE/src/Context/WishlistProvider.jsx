@@ -3,6 +3,7 @@ import React, { createContext, useEffect, useState } from 'react'
 export const WishlistContext = createContext()
 
 function WishlistProvider({ children }) {
+
     // const [wishlist, setwishlist] = useState([])
 
     
@@ -15,6 +16,7 @@ function WishlistProvider({ children }) {
     localStorage.setItem("wishlist", JSON.stringify(wishlist));
   }, [wishlist]);
 
+
     function handleWishlist(obj) {
         const atWishlist = wishlist.some((x) => x._id === obj._id)
         if (atWishlist) {
@@ -24,6 +26,7 @@ function WishlistProvider({ children }) {
             setwishlist([...wishlist, obj])
         }
     }
+
         function checkAtWishlist(obj) {
            return wishlist.some((x) => x._id === obj._id)
         }

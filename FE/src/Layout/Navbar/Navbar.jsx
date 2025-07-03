@@ -1,32 +1,28 @@
-import React from 'react'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { LanguageContext } from '../../Context/LanguageProvider.jsx';
 import './style.css'
 
-
 function Navbar() {
-    return (
-        <>
-            <nav>
-                <div className='navContact'>
-                    <div className='navContactNum'>
-                        <div>+12312-3-1209</div>
-                        <div>azerbaijan@travel.com</div>
-                    </div>
-                    <div className='login'>Login</div>
-                </div>
+  const { toggleLang, t } = useContext(LanguageContext);
 
-                <div className='navbar'>
-                    <div className='navTitle'>
-                        <Link to='/'>Home</Link>
-                        <Link to='admin'>Admin</Link>
-                        <Link to='add'>ADD</Link>
-                        <Link to='wishlist'>Wishlist</Link>
-                    </div>
-                </div>
-            </nav>
-
-        </>
-    )
+  return (
+    <nav className="navbar">
+      <div className="logo">Səyahət Dünyası</div>
+      <div className="nav-links">
+        <Link to="/">{t.home}</Link>
+        <Link to="/admin">{t.tours}</Link>
+        <Link to="/">{t.about}</Link>
+        <Link to="#">{t.contact}</Link>
+        <Link to="/wishlist">{t.wishlist}</Link>
+        <Link to="#">{t.login}</Link>
+        <button className="langBtn" onClick={toggleLang}>{t.langBtn}</button>
+      </div>
+      <div>
+         
+      </div>
+    </nav>
+  );
 }
 
-export default Navbar
+export default Navbar;

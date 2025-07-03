@@ -8,8 +8,8 @@ function Add() {
   const navigate = useNavigate()
   return (
     <>
-        <title>Add location</title>
-         
+      <title>Add location</title>
+
       <div>
         <Formik
           initialValues={{ img: '', name: '', description: '', price: '' }}

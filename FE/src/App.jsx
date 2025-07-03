@@ -8,11 +8,14 @@ import Detail from './pages/Detail/Detail'
 import Home from './pages/Home/Home'
 import NoPage from './pages/NoPage/NoPage'
 import Wishlist from './pages/Wishlist/Wishlist'
+import Login from "./pages/Login/Login";
+import { LanguageProvider } from "./Context/LanguageProvider";
 
 function App() {
 
   return (
     <>
+    <LanguageProvider>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainLayout />}>
@@ -21,10 +24,12 @@ function App() {
           <Route path="add" element={<Add />} />
           <Route path="detail/:id" element={<Detail />} />
           <Route path="wishlist" element={<Wishlist />} />
+          <Route path="login" element={<Login />} />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
+    </LanguageProvider>
     </>
   )
 }

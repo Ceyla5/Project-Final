@@ -3,22 +3,42 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 10px;
 }
-.homeTitle {
+.hero {
+  background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
+  background-size: cover;
+  background-position: center;
+  height: 90vh;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 20px;
+  padding: 0 2rem;
+  color: white;
+  position: relative;
+  width: 100%;
 }
 
-.homeTitle h2 {
-  font-size: 40px;
+
+.hero-text {
+  position: relative;
+  max-width: 600px;
 }
-.homeTitle p {
-  font-size: 15px;
-  color: grey;
+
+.hero-text h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.btn {
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: 0.3s ease;
 }
 
 .cards {
@@ -26,7 +46,7 @@
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
-  /* width: 95%; */
+  width: 95%;
   gap: 20px;
   padding: 10px;
 }
@@ -60,4 +80,45 @@
   border: none;
   border-radius: 0.5rem;
   background-color: rgb(136, 222, 248);
+}
+
+@media (max-width: 650px) {
+ .cards{
+  flex-direction: column;
+    width: 100%;
+  gap: 20px;
+  padding: 10px;
+ }
+ .card {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  height: 450px;
+  border: 1rem #333;
+}
+.cardImg {
+  width: 100%;
+}
+.cardImg img {
+  width: 100%;
+  height: 300px;
+  border-radius: 0.5rem;
+}
+.cardTitle {
+  height: 100px;
+}
+.cardBtn {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+.cardBtn button {
+  width: 100px;
+  height: 40px;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: rgb(136, 222, 248);
+}
 }

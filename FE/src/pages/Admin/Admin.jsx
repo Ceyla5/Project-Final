@@ -74,7 +74,6 @@ function Admin() {
             }
          </tbody>
 
-
         </table>
 
 
