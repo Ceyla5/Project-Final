@@ -12,27 +12,29 @@ import Login from "./pages/Login/Login";
 import { LanguageProvider } from "./Context/LanguageProvider";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Register from "./pages/Register/Register";
 
 
 function App() {
 
   return (
     <>
-    <LanguageProvider>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<MainLayout />}>
-          <Route index element={<Home />} />
-          <Route path="admin" element={<Admin />} />
-          <Route path="add" element={<Add />} />
-          <Route path="detail/:id" element={<Detail />} />
-          <Route path="wishlist" element={<Wishlist />} />
-          <Route path="login" element={<Login />} />
-          <Route path="*" element={<NoPage />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-    </LanguageProvider>
+      <LanguageProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<MainLayout />}>
+              <Route index element={<Home />} />
+              <Route path="admin" element={<Admin />} />
+              <Route path="add" element={<Add />} />
+              <Route path="detail/:id" element={<Detail />} />
+              <Route path="wishlist" element={<Wishlist />} />
+              <Route path="login" element={<Login />} />
+              <Route path="register" element={<Register />} />
+              <Route path="*" element={<NoPage />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </LanguageProvider>
     </>
   )
 }
