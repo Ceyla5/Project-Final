@@ -35,7 +35,7 @@ function Home() {
 
       <ImageSlider />
       <div className='home'>
-
+         <h1 className="page-title">{t.tours}</h1> 
         <div className='cards'>
           {data.map((x) =>
             <div key={x._id} className='card'>
