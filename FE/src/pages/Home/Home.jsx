@@ -28,7 +28,8 @@ function Home() {
       <ThreeDot variant="bounce" color="#319bcc" size="large" text="LOADING" textColor="" />
       </div> )
   }
-
+ 
+  
   return (
     <>
       <title>Home</title>
