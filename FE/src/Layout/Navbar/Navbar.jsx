@@ -16,7 +16,7 @@ function Navbar() {
         <Link to="*">{t.about}</Link>
         <HashLink smooth to="/#footerId">{t.contact}</HashLink>
         <Link to="/wishlist">{t.wishlist}</Link>
-        <Link to="*">{t.login}</Link>
+        <Link to="/login">{t.login}</Link>
         <button className="langBtn" onClick={toggleLang}>{t.langBtn}</button>
       </div>
     </nav>
