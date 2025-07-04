@@ -1,36 +1,66 @@
-import React, { useState } from 'react';
 import axios from 'axios';
-import './style.css';
+import "./style.css";
+import { useState } from 'react';
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
 
 function Register() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [message, setMessage] = useState('');
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({ email: '', password: '' });
+  const [showPassword, setShowPassword] = useState(false);
 
-  const handleRegister = async (e) => {
+  const handleChange = (e) => {
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/register', {
-        email,
-        password,
-      });
-      setMessage(res.data.message);
-      setEmail('');
-      setPassword('');
+      await axios.post('http://localhost:3000/register', formData);
+      alert('Qeydiyyat uğurla tamamlandı!');
+      navigate('/login');
     } catch (err) {
-      setMessage(err.response?.data?.message || 'Qeydiyyat uğursuz oldu');
+      if (err.response?.status === 409) {
+        alert("Bu email artıq istifadə olunub.");
+      } else {
+        alert("Qeydiyyat zamanı xəta baş verdi.");
+      }
     }
   };
 
   return (
-    <div className="register-container">
-      <form onSubmit={handleRegister} className="register-form">
-        <h2>Qeydiyyat</h2>
-        {message && <p className="message">{message}</p>}
-        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
-        <input type="password" placeholder="Şifrə" value={password} onChange={(e) => setPassword(e.target.value)} required/>
-        
-        <button type="submit">Qeydiyyatdan Keç</button>
+    <div className="login-container">
+      <form className="login-form" onSubmit={handleSubmit}>
+        <h4>Qeydiyyat</h4>
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
+        <div className="password-field">
+          <input
+            type={showPassword ? "text" : "password"}
+            name="password"
+            placeholder="Şifrə"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+          <div
+            type="button"
+            className="toggle-password"
+            onClick={() => setShowPassword(prev => !prev)}
+          >
+            {showPassword ? <FaRegEye /> : <FaRegEyeSlash />}
+          </div>
+        </div>
+        <button type="submit">Qeydiyyatdan keç</button>
+        <p className="forgot-password" onClick={() => navigate('/login')}>
+          Artıq hesabınız var? Daxil olun
+        </p>
       </form>
     </div>
   );
