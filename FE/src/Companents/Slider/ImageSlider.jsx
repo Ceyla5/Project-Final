@@ -19,7 +19,7 @@ const ImageSlider = () => {
 
   return (
     <div className="slider-container">
-      <Slider {...settings}>
+      <Slider {...settings} className="slider-background">
         <div className="slide">
           <img
             src="https://www.coe.int/documents/21864805/57873384/2020_Baku_Cover.jpg/9a924e0e-a377-e8b7-4c5f-ab18efb2c441"
