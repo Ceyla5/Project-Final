@@ -46,7 +46,11 @@ function Admin() {
     <>
       <title>Admin</title>
       <div className="admin-panel">
-        <h2>Admin Panel</h2>
+        <h2>
+          {
+            role === "admin" ? ( <h2>Admin Panel</h2> ) : ( <h2> Turlar</h2>)
+          }
+        </h2>
 
         <div className="admin-controls">
           <input
