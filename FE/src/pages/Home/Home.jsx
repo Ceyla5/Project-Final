@@ -36,13 +36,6 @@ function Home() {
 
       <ImageSlider />
       <div className='home'>
-        <div className='hero'>
-          <div className='hero-text'>
-            <h2>{t.heroTitle}</h2>
-            <p>{t.heroDesc}</p>
-            <div className='btn'><button>{t.heroBtn}</button></div>
-          </div>
-        </div>
 
         <div className='cards'>
           {data.map((x) =>
