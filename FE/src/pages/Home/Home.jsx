@@ -11,7 +11,6 @@ import { ThreeDot } from 'react-loading-indicators';
 function Home() {
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
-
   const { handleWishlist, checkAtWishlist } = useContext(WishlistContext)
   const { t } = useContext(LanguageContext);
 

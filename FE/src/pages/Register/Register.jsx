@@ -27,10 +27,9 @@ function Register() {
       <form onSubmit={handleRegister} className="register-form">
         <h2>Qeydiyyat</h2>
         {message && <p className="message">{message}</p>}
-        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required
-        />
-        <input type="password" placeholder="Şifrə" value={password} onChange={(e) => setPassword(e.target.value)} required
-        />
+        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
+        <input type="password" placeholder="Şifrə" value={password} onChange={(e) => setPassword(e.target.value)} required/>
+        
         <button type="submit">Qeydiyyatdan Keç</button>
       </form>
     </div>

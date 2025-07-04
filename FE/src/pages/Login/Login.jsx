@@ -1,39 +1,166 @@
-import React, { useState } from 'react';
 import axios from 'axios';
-import './style.css';
+import "./style.css";
+import { useState } from 'react';
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { useNavigate } from 'react-router';
 
 function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({ email: '', password: '' });
+  const [showPassword, setShowPassword] = useState(false);
+  const [showForgot, setShowForgot] = useState(false);
 
-  const handleLogin = async (e) => {
+  const [codeSent, setCodeSent] = useState(false);
+  const [codeVerified, setCodeVerified] = useState(false);
+  const [codeInput, setCodeInput] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+
+  const handleChange = (e) => {
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/login', { email, password });
-      localStorage.setItem('token', res.data.token);
-      alert("Login successful!");
-      // burda redirect edə bilərsən, məsələn: navigate("/")
+      const res = await axios.post('http://localhost:3000/login', formData);
+      const token = res.data;
+      if (token) {
+        localStorage.setItem('token', token);
+        alert('Uğurla daxil oldunuz!');
+        navigate('/admin');
+      } else {
+        alert('Token alınmadı!');
+      }
     } catch (err) {
-      setError(err.response?.data?.message || 'Login failed');
+      if (err.response && err.response.status === 401) {
+        alert('Email və ya şifrə yanlışdır!');
+      } else {
+        alert('Server xətası baş verdi!');
+      }
+    }
+  };
+
+  const handleSendCode = async () => {
+    if (!formData.email) return alert("Zəhmət olmasa login hissəsində emailinizi yazın!");
+    try {
+      await axios.post('http://localhost:3000/forgot-password', { email: formData.email });
+      alert("4 rəqəmli kod emailinizə göndərildi!");
+      setCodeSent(true);
+    } catch (error) {
+      alert("Email tapılmadı və ya server xətası!");
+    }
+  };
+
+
+  const handleVerifyCode = async () => {
+    try {
+      await axios.post('http://localhost:3000/verify-reset-code', {
+        email: formData.email,
+        code: codeInput
+      });
+      alert("Kod düzgün daxil edildi! Yeni şifrəni yazın.");
+      setCodeVerified(true);
+    } catch (err) {
+      alert("Kod yanlışdır və ya vaxtı keçib!");
+    }
+  };
+
+  const handleResetPassword = async () => {
+    if (!newPassword) return alert("Yeni şifrə boş ola bilməz!");
+    try {
+      await axios.post('http://localhost:3000/reset-password', {
+        email: formData.email,
+        newPassword
+      });
+      alert("Yeni şifrə uğurla təyin edildi! İndi yenidən daxil olun.");
+      setShowForgot(false);
+      setCodeSent(false);
+      setCodeVerified(false);
+      setCodeInput('');
+      setNewPassword('');
+    } catch (err) {
+      alert("Şifrə dəyişdirilə bilmədi. Yenidən cəhd edin.");
     }
   };
 
   return (
-    <>
+    <div className="login-container">
+      <form className="login-form" onSubmit={handleSubmit}>
+        <h4>Daxil ol</h4>
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
+        <div className="password-field">
+          <input
+            type={showPassword ? "text" : "password"}
+            name="password"
+            placeholder="Şifrə"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+          <div
+            type="button"
+            className="toggle-password"
+            onClick={() => setShowPassword(prev => !prev)}
+          >
+            {showPassword ? <FaRegEye /> : <FaRegEyeSlash />}
+          </div>
+        </div>
+        <button type="submit">Giriş</button>
 
-      <title>Login</title>
+        <p className="forgot-password" onClick={() => setShowForgot(!showForgot)}>
+          Parolu unutmusunuz?
+        </p>
 
-      <div className="login-container">
-        <form onSubmit={handleLogin} className="login-form">
-          <h2>Login</h2>
-          {error && <p className="error">{error}</p>}
-          <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-          <input type="password" placeholder="Şifrə" value={password} onChange={(e) => setPassword(e.target.value)} required />
-          <button type="submit">Daxil ol</button>
-        </form>
-      </div>
-    </>
+        {showForgot && (
+          <div className="forgot-password-form">
+            {!codeSent && (
+              <div>
+                <p>Emailiniz: <b>{formData.email || "email daxil edilməyib"}</b></p>
+                <button type="button" onClick={handleSendCode} disabled={!formData.email}>
+                  Kodu göndər
+                </button>
+              </div>
+            )}
+
+            {codeSent && !codeVerified && (
+              <div>
+                <input
+                  type="text"
+                  placeholder="4 rəqəmli kod"
+                  maxLength={4}
+                  value={codeInput}
+                  onChange={(e) => setCodeInput(e.target.value)}
+                />
+                <button type="button" onClick={handleVerifyCode}>
+                  Kodu təsdiqlə
+                </button>
+              </div>
+            )}
+
+            {codeVerified && (
+              <div>
+                <input
+                  type="password"
+                  placeholder="Yeni şifrə"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                />
+                <button type="button" onClick={handleResetPassword}>
+                  Şifrəni yenilə
+                </button>
+              </div>
+            )}
+          </div>
+        )}
+      </form>
+    </div>
   );
 }
 
