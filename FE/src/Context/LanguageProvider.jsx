@@ -11,7 +11,7 @@ export const LanguageProvider = ({ children }) => {
 
   const texts = {
     az: {
-      logo:"Səyahət Dünyası",
+      logo: "Səyahət Dünyası",
       home: "Ana səhifə",
       tours: "Turlar",
       about: "Haqqımızda",

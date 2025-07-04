@@ -9,7 +9,10 @@ function Navbar() {
 
   return (
     <nav className="navbar">
-      <div className="logo">{t.logo}</div>
+      <div className="logo">
+        <img src="" alt="" />
+        
+        {t.logo}</div>
       <div className="nav-links">
         <Link to="/">{t.home}</Link>
         <Link to="/admin">{t.tours}</Link>

@@ -60,7 +60,8 @@
     width: 100%;
   }
 
-  .nav-links a, .langBtn {
+  .nav-links a,
+  .langBtn {
     width: 100%;
     padding: 10px 0;
   }

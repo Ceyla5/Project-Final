@@ -20,22 +20,22 @@ function Admin() {
   }, []);
 
   function handleDelete(id) {
-  const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token");
 
-  axios.delete(`http://localhost:3000/travels/${id}`, {
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
-  })
-  .then(() => {
-    axios.get('http://localhost:3000/travels')
-      .then(res => setData(res.data));
-  })
-  .catch(err => {
-    console.error("Silinmə zamanı xəta:", err);
-    alert("Silməyə icazə yoxdur və ya token etibarsızdır.");
-  });
-}
+    axios.delete(`http://localhost:3000/travels/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+      .then(() => {
+        axios.get('http://localhost:3000/travels')
+          .then(res => setData(res.data));
+      })
+      .catch(err => {
+        console.error("Silinmə zamanı xəta:", err);
+        alert("Silməyə icazə yoxdur və ya token etibarsızdır.");
+      });
+  }
 
   function handleSort(a, b) {
     if (!sort.name) return 0;
@@ -54,11 +54,11 @@ function Admin() {
     <>
       <title>Admin</title>
       <div className="admin-panel">
-        
-          {
-            role === "admin" ? ( <h2>Admin Panel</h2> ) : ( <h2> Turlar</h2>)
-          }
-       
+
+        {
+          role === "admin" ? (<h2>Admin Panel</h2>) : (<h2> Turlar</h2>)
+        }
+
 
         <div className="admin-controls">
           <input

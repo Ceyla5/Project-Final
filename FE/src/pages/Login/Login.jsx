@@ -84,85 +84,85 @@ function Login() {
 
   return (
     <>
-    <title>Login</title>
-    <div className="login-container">
-      <form className="login-form" onSubmit={handleSubmit}>
-        <h4>Daxil ol</h4>
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-        <div className="password-field">
+      <title>Login</title>
+      <div className="login-container">
+        <form className="login-form" onSubmit={handleSubmit}>
+          <h4>Daxil ol</h4>
           <input
-            type={showPassword ? "text" : "password"}
-            name="password"
-            placeholder="Şifrə"
-            value={formData.password}
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
             onChange={handleChange}
             required
           />
-          <div
-            type="button"
-            className="toggle-password"
-            onClick={() => setShowPassword(prev => !prev)}
-          >
-            {showPassword ? <FaRegEye /> : <FaRegEyeSlash />}
+          <div className="password-field">
+            <input
+              type={showPassword ? "text" : "password"}
+              name="password"
+              placeholder="Şifrə"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+            <div
+              type="button"
+              className="toggle-password"
+              onClick={() => setShowPassword(prev => !prev)}
+            >
+              {showPassword ? <FaRegEye /> : <FaRegEyeSlash />}
+            </div>
           </div>
-        </div>
-        <button type="submit">Giriş</button>
+          <button type="submit">Giriş</button>
 
-        <p className="forgot-password" onClick={() => setShowForgot(!showForgot)}>
-          Parolu unutmusunuz?
-        </p>
+          <p className="forgot-password" onClick={() => setShowForgot(!showForgot)}>
+            Parolu unutmusunuz?
+          </p>
 
-        {showForgot && (
-          <div className="forgot-password-form">
-            {!codeSent && (
-              <div>
-                <p>Emailiniz: <b>{formData.email || "email daxil edilməyib"}</b></p>
-                <button type="button" onClick={handleSendCode} disabled={!formData.email}>
-                  Kodu göndər
-                </button>
-              </div>
-            )}
+          {showForgot && (
+            <div className="forgot-password-form">
+              {!codeSent && (
+                <div>
+                  <p>Emailiniz: <b>{formData.email || "email daxil edilməyib"}</b></p>
+                  <button type="button" onClick={handleSendCode} disabled={!formData.email}>
+                    Kodu göndər
+                  </button>
+                </div>
+              )}
 
-            {codeSent && !codeVerified && (
-              <div>
-                <input
-                  type="text"
-                  placeholder="4 rəqəmli kod"
-                  maxLength={4}
-                  value={codeInput}
-                  onChange={(e) => setCodeInput(e.target.value)}
-                />
-                <button type="button" onClick={handleVerifyCode}>
-                  Kodu təsdiqlə
-                </button>
-              </div>
-            )}
+              {codeSent && !codeVerified && (
+                <div>
+                  <input
+                    type="text"
+                    placeholder="4 rəqəmli kod"
+                    maxLength={4}
+                    value={codeInput}
+                    onChange={(e) => setCodeInput(e.target.value)}
+                  />
+                  <button type="button" onClick={handleVerifyCode}>
+                    Kodu təsdiqlə
+                  </button>
+                </div>
+              )}
 
-            {codeVerified && (
-              <div>
-                <input
-                  type="password"
-                  placeholder="Yeni şifrə"
-                  value={newPassword}
-                  onChange={(e) => setNewPassword(e.target.value)}
-                />
-                <button type="button" onClick={handleResetPassword}>
-                  Şifrəni yenilə
-                </button>
-              </div>
-            )}
-          </div>
-        )}
-      </form>
-    </div>
-                  </>
+              {codeVerified && (
+                <div>
+                  <input
+                    type="password"
+                    placeholder="Yeni şifrə"
+                    value={newPassword}
+                    onChange={(e) => setNewPassword(e.target.value)}
+                  />
+                  <button type="button" onClick={handleResetPassword}>
+                    Şifrəni yenilə
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+        </form>
+      </div>
+    </>
   );
 }
 
