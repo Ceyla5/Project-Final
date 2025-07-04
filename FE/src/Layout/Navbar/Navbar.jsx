@@ -13,7 +13,7 @@ function Navbar() {
       <div className="nav-links">
         <Link to="/">{t.home}</Link>
         <Link to="/admin">{t.tours}</Link>
-        <Link to="*">{t.about}</Link>
+        <Link to="/about">{t.about}</Link>
         <HashLink smooth to="/#footerId">{t.contact}</HashLink>
         <Link to="/wishlist">{t.wishlist}</Link>
         <Link to="/login">{t.login}</Link>

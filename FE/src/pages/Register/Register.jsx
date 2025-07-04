@@ -9,7 +9,8 @@ function Register() {
 const [formData, setFormData] = useState({
   username: '',
   email: '',
-  password: ''
+  password: '',
+  role: 'admin'
 });
   const [showPassword, setShowPassword] = useState(false);
 
@@ -33,6 +34,9 @@ const [formData, setFormData] = useState({
   };
 
   return (
+    <>
+        <title>Register</title>
+
     <div className="login-container">
       <form className="login-form" onSubmit={handleSubmit}>
         <h4>Qeydiyyat</h4>
@@ -62,12 +66,12 @@ const [formData, setFormData] = useState({
             onChange={handleChange}
             required
             autoComplete="current-password"
-          />
+            />
           <div
             type="button"
             className="toggle-password"
             onClick={() => setShowPassword(prev => !prev)}
-          >
+            >
             {showPassword ? <FaRegEye /> : <FaRegEyeSlash />}
           </div>
         </div>
@@ -77,6 +81,7 @@ const [formData, setFormData] = useState({
         </p>
       </form>
     </div>
+              </>
   );
 }
 

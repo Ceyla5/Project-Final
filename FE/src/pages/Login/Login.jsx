@@ -83,6 +83,8 @@ function Login() {
   };
 
   return (
+    <>
+    <title>Login</title>
     <div className="login-container">
       <form className="login-form" onSubmit={handleSubmit}>
         <h4>Daxil ol</h4>
@@ -160,6 +162,7 @@ function Login() {
         )}
       </form>
     </div>
+                  </>
   );
 }
 

@@ -13,6 +13,7 @@ import { LanguageProvider } from "./Context/LanguageProvider";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Register from "./pages/Register/Register";
+import About from "./pages/About/About";
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
               <Route index element={<Home />} />
               <Route path="admin" element={<Admin />} />
               <Route path="add" element={<Add />} />
+              <Route path="about" element={<About />} />
               <Route path="detail/:id" element={<Detail />} />
               <Route path="wishlist" element={<Wishlist />} />
               <Route path="login" element={<Login />} />
