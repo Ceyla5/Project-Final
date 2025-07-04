@@ -11,6 +11,7 @@ export const LanguageProvider = ({ children }) => {
 
   const texts = {
     az: {
+      logo:"Səyahət Dünyası",
       home: "Ana səhifə",
       tours: "Turlar",
       about: "Haqqımızda",
@@ -25,6 +26,7 @@ export const LanguageProvider = ({ children }) => {
       price: "Manat"
     },
     en: {
+      logo: "The world of travel",
       home: "Home",
       tours: "Tours",
       about: "About",

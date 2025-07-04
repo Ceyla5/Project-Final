@@ -4,6 +4,7 @@ import axios from 'axios'
 import { WishlistContext } from '../../Context/WishlistProvider'
 import { Link } from 'react-router'
 import { LanguageContext } from '../../Context/LanguageProvider.jsx'
+import ImageSlider from '../../Companents/Slider/ImageSlider.jsx'
 
 function Home() {
   const [data, setData] = useState([])
@@ -22,6 +23,7 @@ function Home() {
     <>
       <title>Home</title>
 
+          <ImageSlider/>
       <div className='home' >
         <div className='hero'>
           <div className='hero-text'>
