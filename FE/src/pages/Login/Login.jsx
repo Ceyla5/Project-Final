@@ -9,7 +9,6 @@ function Login() {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [showPassword, setShowPassword] = useState(false);
   const [showForgot, setShowForgot] = useState(false);
-
   const [codeSent, setCodeSent] = useState(false);
   const [codeVerified, setCodeVerified] = useState(false);
   const [codeInput, setCodeInput] = useState('');
@@ -22,7 +21,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:3000/login', formData);
+      const res = await axios.post('http://localhost:3000/api/auth/login', formData);
       const token = res.data;
       if (token) {
         localStorage.setItem('token', token);

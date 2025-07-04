@@ -33,6 +33,11 @@ export const registerController = async (req, res) => {
   try {
     const { username, password, email } = req.body;
 
+    const existingUser = await userModel.findOne({ email });
+    if (existingUser) {
+      return res.status(409).send("Bu email artıq istifadə olunur");
+    }
+
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = new userModel({

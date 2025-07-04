@@ -6,7 +6,11 @@ import { useNavigate } from 'react-router-dom';
 
 function Register() {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({ email: '', password: '' });
+const [formData, setFormData] = useState({
+  username: '',
+  email: '',
+  password: ''
+});
   const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e) => {
@@ -16,7 +20,7 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:3000/register', formData);
+      await axios.post('http://localhost:3000/api/auth/register', formData);
       alert('Qeydiyyat uğurla tamamlandı!');
       navigate('/login');
     } catch (err) {
@@ -33,12 +37,21 @@ function Register() {
       <form className="login-form" onSubmit={handleSubmit}>
         <h4>Qeydiyyat</h4>
         <input
+          type="text"
+          name="username"
+          placeholder="Username"
+          value={formData.username}
+          onChange={handleChange}
+          required
+        />
+        <input
           type="email"
           name="email"
           placeholder="Email"
           value={formData.email}
           onChange={handleChange}
           required
+            autoComplete="email"
         />
         <div className="password-field">
           <input
@@ -48,6 +61,7 @@ function Register() {
             value={formData.password}
             onChange={handleChange}
             required
+            autoComplete="current-password"
           />
           <div
             type="button"

@@ -15,11 +15,21 @@ function Admin() {
       .then(res => setData(res.data));
   }, []);
 
-  function handleDelete(id) {
-    axios.delete(`http://localhost:3000/travels/${id}`)
-      .then(() => axios.get('http://localhost:3000/travels')
-        .then(res => setData(res.data)));
-  }
+function handleDelete(id) {
+  const token = localStorage.getItem("token");
+
+  axios.delete(`http://localhost:3000/travels/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then(() => {
+      axios.get("http://localhost:3000/travels")
+        .then((res) => setData(res.data));
+    })
+    .catch((err) => console.error(err.response?.data || err.message));
+}
+
 
   function handleSort(a, b) {
     if (!sort.name) return 0;
